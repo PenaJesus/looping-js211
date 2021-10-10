@@ -52,7 +52,7 @@
    {
       firstName: "Jim",
       lastName: "Bean",
-      birthDate: "Sep 16, 1821",
+      birthDate: "sep 16, 1821",
       gender: "male",
     },
 
@@ -60,8 +60,48 @@
 
   // 6.Create a function that uses a for...of loop and an if statement to console.log the value associated with the key birthDate of each object if the birth year is an odd number.
    
-     for (const element of arrayOfPersons) {
-       console.log(element)
-      
+     for ( const person of arrayOfPersons) {
+     const birthDateLength = (person.birthDate.length)
+     console.log(birthDateLength);
+     const lastDigit = (person.birthDate.charAt(birthDateLength -1))
+     if (parseInt(lastDigit) % 2 === 0) {
+       console.log('The number is even')
      }
-    
+     else {
+       console.log('The number is odd',person.birthDate);
+     }
+     
+     
+    }
+
+  //7. Use .map() to map over the arrayOfPersons and console.log() their information.
+
+  const map = arrayOfPersons.map (getInfo)
+
+  function getInfo(item) {
+    console.log('person info', [item.firstName,item.lastName,item.birthDate,item.gender])
+  }
+  
+  //8. Use .filter() to filter the persons array and console.log 0only males in the array.
+
+  arrayOfPersons.filter(checkMale)
+  function checkMale(person) {
+    console.log (person.gender)
+    if(person.gender === 'male') {
+      console.log(person.gender === 'male')
+      console.log(person)
+      return person
+    }
+  }
+
+  //9. Create a function that returns true if the value of birthDate is before Jan 1, 1990.
+
+  for (const person of arrayOfPersons) {
+    const birthYear = person.birthDate.substring(person.birthDate.length -4)
+    console.log(birthYear)
+      if (parseInt(birthYear) < 1990) {
+        return true
+    }
+  }
+
+  //10. Use .filter() to filter the persons array and console.log only people that were born before Jan 1, 1990.
